@@ -11,9 +11,10 @@ print ("FYI : This Program only works on ubuntu or debian")
 APIURL= "https://napi.arvancloud.com/vod/2.0"
 APIKEY= "Apikey <<PUTAPIKEYHERE>>"
 DEBUG=True
-Download=False
+Download=True
 WriteToFile=True
-CSVFILE="URL_File.csv"
+DownloadOriginal=True
+CSVFILE="URLFile.csv"
 PERPAGE="9999"
 
 #Debug
@@ -33,11 +34,8 @@ if DEBUG == True:
     print (CHANNELIDS)
     print (type(CHANNELIDS))
 
-
-
 print ("-----------Getting MP4 URLS - Download and/or Write to file-----------")
-mp4urls= getlist.getmp4urls(APIURL, APIKEY, CHANNELIDS)
-
+mp4urls= getlist.getmp4urls(APIURL, APIKEY, CHANNELIDS, DownloadOriginal)
 if WriteToFile == True:
     if os.path.exists(CSVFILE):
         os.remove(CSVFILE)

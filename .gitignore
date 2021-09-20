@@ -1,0 +1,5 @@
+*.pyc
+*.pyo
+URL_File.csv
+download/
+.vscode

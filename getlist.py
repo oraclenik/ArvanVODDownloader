@@ -21,7 +21,7 @@ def getchannellist(APIURL, APIKEY, PERPAGE):
     channellist = getjson(URL, headers)
     return channellist
 
-def getmp4urls(APIURL, APIKEY, CHANNELIDS):
+def getmp4urls(APIURL, APIKEY, CHANNELIDS, DownloadOriginal):
     headers = {'Authorization': APIKEY,}
     mp4urls=list()
 
@@ -31,7 +31,7 @@ def getmp4urls(APIURL, APIKEY, CHANNELIDS):
         if j:
             for prefix in j['data']:
                 mp4_urls=(prefix['mp4_videos'])
-                #mp4_title=(prefix['title'])
-                fileinfo=[mp4_urls]
-                mp4urls.append(fileinfo)
+                originalurls=[(prefix['video_url'])]
+                mp4urls.append([mp4_urls])
+                mp4urls.append([originalurls])
     return mp4urls
